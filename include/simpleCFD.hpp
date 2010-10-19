@@ -1,6 +1,6 @@
 /*! simpleCFD.
 *
-* A simple CFD solver for 1D convection-diffusion problems. 
+* A simple CFD solver for 1D diffusion problems. 
 *
 * By Laurence R. McGlashan
 * October 2010
@@ -14,3 +14,5 @@
 // simpleCFD Headers.
 #include "inputOutput.hpp"
 #include "grid.hpp"
+#include "field.hpp"
+#include "matrix.hpp"

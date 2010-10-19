@@ -12,17 +12,27 @@ namespace simpleCFD {
 
         private:
 
-        double a_w;
-        double a_e;
+        double dx_;
+        double A_;
 
         double cellCentre;
     
 
         public:
 
-            cell(){}
+            cell();
 
             ~cell(){}
+
+        inline const double& A() const
+        {
+            return A_;
+        }
+
+        inline const double& dx() const
+        {
+            return dx_;
+        }
 
     };
 

@@ -4,6 +4,9 @@
 #include <iostream>
 #include <ostream>
 #include <fstream>
+#include <cstdlib>
+
+#include "field.hpp"
 
 namespace simpleCFD {
 
@@ -21,6 +24,9 @@ namespace simpleCFD {
 
             //! Print header to an output stream.
             bool printHeader(std::ostream& outputStream);
+
+            //! Plot gnuplot graph
+            void plotGraph(const simpleCFD::field& variable);
 
     };
 

@@ -6,7 +6,7 @@ int main()
 {
 
     simpleCFD::inputOutput IO;
-
+    
     // Print Info
     IO.printHeader(cout);
     
@@ -14,14 +14,23 @@ int main()
     
     // Create Grid.
     simpleCFD::grid Grid;
+
+    simpleCFD::field T(Grid);
+    double k = 10;
     
-    // Create Boundary Conditions.
-
     // Construct Matrix.
+    simpleCFD::matrix temperatureMatrix(Grid, T);
 
+    temperatureMatrix.discretise
+    (
+        k, T
+    );
+    
     // Solve Matrix.
+    temperatureMatrix.solve();
 
     // Output results.
+    IO.plotGraph(T);
 
     return 0;
 

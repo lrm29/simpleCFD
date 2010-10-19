@@ -11,6 +11,7 @@ namespace simpleCFD {
 
     typedef std::map<int,cell> mapLabelCell;
     typedef std::pair<int,cell> pairLabelCell;
+    typedef std::map<int,double> mapLabelDouble;
     
     /*! grid Class.
     *
@@ -20,7 +21,8 @@ namespace simpleCFD {
 
         private:
 
-            mapLabelCell cells; 
+            mapLabelCell cells_;
+            double nCells_;
 
         public:
 
@@ -31,7 +33,16 @@ namespace simpleCFD {
 
         // Member Functions.
         bool loadGrid();
-        
+
+        inline const double& nCells() const
+        {
+            return nCells_;
+        }
+
+        inline const cell& getCell(const int& i)
+        {
+            return cells_[i];
+        }
 
     };
 

@@ -1,6 +1,6 @@
 cpp=g++
 flag=-c -O2 -Iinclude -Wall
-obj=inputOutput.o cell.o grid.o
+obj=inputOutput.o cell.o grid.o field.o matrix.o boundaryConditions.o
 
 export path=.
 bin=$(path)/bin
@@ -23,6 +23,15 @@ grid.o: $(source)/grid.cpp $(include)/grid.hpp
 cell.o: $(source)/cell.cpp $(include)/cell.hpp
 	$(cpp) $(flag) $(source)/cell.cpp
 
+field.o: $(source)/field.cpp $(include)/field.hpp
+	$(cpp) $(flag) $(source)/field.cpp
+
+matrix.o: $(source)/matrix.cpp $(include)/matrix.hpp
+	$(cpp) $(flag) $(source)/matrix.cpp
+
+boundaryConditions.o: $(source)/boundaryConditions.cpp $(include)/boundaryConditions.hpp
+	$(cpp) $(flag) $(source)/boundaryConditions.cpp
+	
 # leave just source code.
 clean:
 	rm -rf $(path)/*.o \#* *~ $(lib)/*.a $(bin)/simpleCFD

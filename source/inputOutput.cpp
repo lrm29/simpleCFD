@@ -12,3 +12,10 @@ bool simpleCFD::inputOutput::printHeader(std::ostream& outputStream)
 
     return true;
 }
+
+void simpleCFD::inputOutput::plotGraph(const simpleCFD::field& variable)
+{
+
+    //std::system("gnuplot");
+
+}
