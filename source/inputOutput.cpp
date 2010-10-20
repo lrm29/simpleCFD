@@ -33,9 +33,9 @@ void simpleCFD::inputOutput::printResults
 )
 {
 
-    std::cout << std::left << std::setw(10) << "x (m)" << " " << "Temperature (K)" << std::endl; 
+    outputStream << std::left << std::setw(10) << "# x (m)" << " " << "Temperature (K)" << std::endl; 
     for (unsigned int i=1; i<=Grid.nCells(); ++i) {
-        std::cout << std::setw(10) << Grid.getCell(i).cellCentre() << " " << Field[i] << std::endl;
+        outputStream << std::setw(10) << Grid.getCell(i).cellCentre() << " " << Field[i] << std::endl;
     }
 
 }

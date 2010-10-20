@@ -34,6 +34,11 @@ int main()
 
     // Output results.
     IO.printResults(cout,Grid,T);
+    
+    ofstream file("results.txt");
+    IO.printResults(file,Grid,T);
+    file.close();
+    
     IO.plotGraph(T);
 
     IO.printTime();
