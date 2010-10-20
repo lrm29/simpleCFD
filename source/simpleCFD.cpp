@@ -5,6 +5,9 @@ using namespace std;
 int main()
 {
 
+    // Diffusion Coefficient.
+    double k = 0.5;
+
     simpleCFD::inputOutput IO;
     
     // Print Info
@@ -15,8 +18,8 @@ int main()
     // Create Grid.
     simpleCFD::grid Grid;
 
+    // Create Field.
     simpleCFD::field T(Grid);
-    double k = 10;
     
     // Construct Matrix.
     simpleCFD::matrix temperatureMatrix(Grid, T);
@@ -30,7 +33,10 @@ int main()
     temperatureMatrix.solve();
 
     // Output results.
+    IO.printResults(cout,Grid,T);
     IO.plotGraph(T);
+
+    IO.printTime();
 
     return 0;
 

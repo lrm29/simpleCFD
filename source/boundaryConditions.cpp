@@ -18,14 +18,6 @@ void simpleCFD::boundaryConditions::applyBoundaryConditions
 )
 {
 
-    S_u.insert(std::make_pair<int,double>(
-        1,2*variable[0]*constant*Grid_.getCell(1).A()/Grid_.getCell(1).dx()
-    ));
-    
-    S_u.insert(std::make_pair<int,double>(
-        Grid_.nCells(),2*variable[Grid_.nCells()+1]*constant*Grid_.getCell(Grid_.nCells()).A()/Grid_.getCell(Grid_.nCells()).dx()
-    ));
-
     S_P.insert(std::make_pair<int,double>(
         1,-2*constant*Grid_.getCell(1).A()/Grid_.getCell(1).dx()
     ));

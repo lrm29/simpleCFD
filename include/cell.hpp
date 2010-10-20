@@ -15,7 +15,7 @@ namespace simpleCFD {
         double dx_;
         double A_;
 
-        double cellCentre;
+        double cellCentre_;
     
 
         public:
@@ -24,15 +24,13 @@ namespace simpleCFD {
 
             ~cell(){}
 
-        inline const double& A() const
-        {
-            return A_;
-        }
+        inline const double& A() const {return A_;}
 
-        inline const double& dx() const
-        {
-            return dx_;
-        }
+        inline const double& dx() const {return dx_;}
+
+        inline const double& cellCentre() const {return cellCentre_;}
+
+        inline void setCellCentre(const double& cellCentre) {cellCentre_ = cellCentre;}
 
     };
 

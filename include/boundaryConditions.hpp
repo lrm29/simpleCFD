@@ -18,7 +18,6 @@ namespace simpleCFD {
             simpleCFD::grid& Grid_;
 
             mapLabelDouble S_P;
-            mapLabelDouble S_u;
     
 
         public:
@@ -38,11 +37,6 @@ namespace simpleCFD {
                 const double& constant,
                 const simpleCFD::field& variable
             );
-
-            inline const double& getSource(const int& i)
-            {
-                return S_u[i];
-            }
 
     };
 

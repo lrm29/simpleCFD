@@ -24,6 +24,8 @@ namespace simpleCFD {
             mapLabelCell cells_;
             double nCells_;
 
+            double gridLength_;
+
         public:
 
             grid();
@@ -34,16 +36,11 @@ namespace simpleCFD {
         // Member Functions.
         bool loadGrid();
 
-        inline const double& nCells() const
-        {
-            return nCells_;
-        }
+        inline const double& nCells() const {return nCells_;}
 
-        inline const cell& getCell(const int& i)
-        {
-            return cells_[i];
-        }
-
+       // inline const cell& getCell(const int& i) {return cells_[i];}
+        inline cell& getCell(const int& i) {return cells_[i];}
+        
     };
 
 } // End namespace simpleCFD.

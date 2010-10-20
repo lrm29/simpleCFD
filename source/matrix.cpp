@@ -2,7 +2,20 @@
 
 //----------------------------------------------------------------------------//
 
+void simpleCFD::matrix::sources(const double& constant, const field& variable)
+{
 
+    for (unsigned int i=1; i<=Grid_.nCells(); ++i) {
+        S_u.insert(std::make_pair<int,double>(
+            i,1e6*Grid_.getCell(i).dx()    
+        ));
+    }
+
+    S_u[1] += 2*variable[0]*constant*Grid_.getCell(1).A()/Grid_.getCell(1).dx();
+    
+    S_u[Grid_.nCells()] += 2*variable[Grid_.nCells()+1]*constant*Grid_.getCell(Grid_.nCells()).A()/Grid_.getCell(Grid_.nCells()).dx();
+
+}
 
 //----------------------------------------------------------------------------//
 
@@ -29,16 +42,11 @@ void simpleCFD::matrix::discretise(const double& constant, const field& variable
     for (unsigned int i=1; i<=Grid_.nCells(); ++i) {
         a_p.insert(std::make_pair<int,double>(i,a_w[i]+a_e[i]));
     }
-    
-    for (unsigned int i=1; i<=Grid_.nCells(); ++i) {
-        std::cout << a_w[i] << " " << a_p[i] << " " << a_e[i] << std::endl << std::endl;
-    }
+
+    sources(constant, variable);
 
     Boundaries_.applyBoundaryConditions(a_w, a_p, a_e, constant, variable);
 
-    for (unsigned int i=1; i<=Grid_.nCells(); ++i) {
-        std::cout << a_w[i] << " " << a_p[i] << " " << a_e[i] << std::endl << std::endl;
-    }
 
 /*    upperDiagonal.clear();
     diagonal.clear();
@@ -74,24 +82,11 @@ bool simpleCFD::matrix::TDMA()
     C.push_back(0.0);
     for (unsigned int i=1; i<=Grid_.nCells(); ++i) {    
         A.push_back(a_e[i]/(a_p[i]-a_w[i]*A[i-1]));
-        C.push_back((a_w[i]*C[i-1] + Boundaries_.getSource(i))/(a_p[i] - a_w[i]*A[i-1]));
+        C.push_back((a_w[i]*C[i-1] + S_u[i])/(a_p[i] - a_w[i]*A[i-1]));
     }
 
     for (unsigned int i=Grid_.nCells(); i>=1; --i) {
-    std::cout << A[i]*Field_[i+1] << " " << std::endl;
         Field_[i] = A[i]*Field_[i+1] + C[i];
-    }
-
-   std::cout << std::endl;
-   
-    for (unsigned int i=1; i<=Grid_.nCells(); ++i) {
-        std::cout << A[i] << " " << C[i] << std::endl;
-    }
-
-   std::cout << std::endl;
-
-    for (unsigned int i=1; i<=Grid_.nCells(); ++i) {
-        std::cout << Field_[i] << " " << i << std::endl;
     }
 
     return true;

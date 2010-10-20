@@ -23,13 +23,17 @@ namespace simpleCFD {
         simpleCFD::boundaryConditions Boundaries_;
 
         mapLabelDouble a_w, a_e, a_p;
-        mapLabelDouble S_u, S_p;
+        mapLabelDouble S_u;
 
         doubleVector lowerDiagonal;
         doubleVector diagonal;
         doubleVector upperDiagonal;
 
-        void applyBoundaryConditions();
+        void sources
+        (
+            const double& constant, 
+            const field& variable
+        );
 
         public:
 

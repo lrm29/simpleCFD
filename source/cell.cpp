@@ -2,7 +2,7 @@
 
 simpleCFD::cell::cell()
 :
-  dx_(0.1),
+  dx_(0.001),
   A_(1.0)
 {
 

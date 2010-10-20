@@ -9,8 +9,7 @@ simpleCFD::field::field(const simpleCFD::grid& Grid)
 {
 
     data_[0] = 100;
-
-    data_[6] = 500;
+    data_[Grid.nCells()+1] = 200;
 
 }
 
