@@ -4,8 +4,8 @@ using namespace std;
 
 simpleCFD::grid::grid()
 :
- nCells_(200000),
- gridLength_(0.02)
+ nCells_(100),
+ gridLength_(1)
 {
 
     // Load in cell centre coordinates.

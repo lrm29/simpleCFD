@@ -29,11 +29,7 @@ namespace simpleCFD {
         doubleVector diagonal;
         doubleVector upperDiagonal;
 
-        void sources
-        (
-            const double& constant, 
-            const field& variable
-        );
+        void sources(const double& constant, const field& variable);
 
         public:
 
@@ -41,7 +37,9 @@ namespace simpleCFD {
 
             ~matrix(){}
 
-            void discretise(const double& constant, const field& variable);
+            void divergence(const double& constant, const field& variable);
+
+            void laplacian(const double& constant, const field& variable);
 
             void solve();
 

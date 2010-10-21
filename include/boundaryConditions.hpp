@@ -28,8 +28,17 @@ namespace simpleCFD {
             );
 
             ~boundaryConditions(){}
-
-            void applyBoundaryConditions
+            
+            void applyBoundaryConditionsConvection
+            (
+                mapLabelDouble& a_w, 
+                mapLabelDouble& a_p, 
+                mapLabelDouble& a_e, 
+                const double& constant,
+                const simpleCFD::field& variable
+            );
+            
+            void applyBoundaryConditionsDiffusion
             (
                 mapLabelDouble& a_w, 
                 mapLabelDouble& a_p, 

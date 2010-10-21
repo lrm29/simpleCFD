@@ -13,7 +13,6 @@ bool simpleCFD::inputOutput::printHeader(std::ostream& outputStream)
 {
     time_t rawtime;
     time(&rawtime);
-    //std::cout << "Current time is: " << asctime(localtime(&rawtime));
 
     outputStream << "\n|----------------------------------------------------|" << endl;
     outputStream << "|simpleCFD: A 1D Convection-Diffusion Equation Solver|" << endl;
@@ -33,7 +32,7 @@ void simpleCFD::inputOutput::printResults
 )
 {
 
-    outputStream << std::left << std::setw(10) << "# x (m)" << " " << "Temperature (K)" << std::endl; 
+    outputStream << std::left << std::scientific << std::setw(10) << "# x (m)" << " " << "Temperature (K)" << std::endl; 
     for (unsigned int i=1; i<=Grid.nCells(); ++i) {
         outputStream << std::setw(10) << Grid.getCell(i).cellCentre() << " " << Field[i] << std::endl;
     }
@@ -51,6 +50,7 @@ void simpleCFD::inputOutput::printTime()
 void simpleCFD::inputOutput::plotGraph(const simpleCFD::field& variable)
 {
 
+    // system is bad! naughty naughty
     //std::system("gnuplot");
 
 }

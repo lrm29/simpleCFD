@@ -5,9 +5,6 @@ using namespace std;
 int main()
 {
 
-    // Diffusion Coefficient.
-    double k = 0.5;
-
     simpleCFD::inputOutput IO;
     
     // Print Info
@@ -23,11 +20,12 @@ int main()
     
     // Construct Matrix.
     simpleCFD::matrix temperatureMatrix(Grid, T);
-
-    temperatureMatrix.discretise
-    (
-        k, T
-    );
+    
+    // Diffusion Coefficient.
+    double k = 0.1;
+    double coeff = 0.1;
+    temperatureMatrix.laplacian(k, T);
+    temperatureMatrix.divergence(coeff, T);
     
     // Solve Matrix.
     temperatureMatrix.solve();
