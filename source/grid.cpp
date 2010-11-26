@@ -4,7 +4,7 @@ using namespace std;
 
 simpleCFD::grid::grid()
 :
- nCells_(100),
+ nCells_(10000),
  gridLength_(1)
 {
 

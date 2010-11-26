@@ -22,8 +22,8 @@ int main()
     simpleCFD::matrix temperatureMatrix(Grid, T);
     
     // Diffusion Coefficient.
-    double k = 0.1;
-    double coeff = 0.1;
+    double k = 0.001;
+    double coeff = 1.0;
     temperatureMatrix.laplacian(k, T);
     temperatureMatrix.divergence(coeff, T);
     
