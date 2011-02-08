@@ -1,4 +1,4 @@
-// Main file.
+// Main file. Test.
 
 #include "simpleCFD.hpp"
 
